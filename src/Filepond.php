@@ -456,7 +456,7 @@ class Filepond extends Field
             'dokaOptions' => config('nova-filepond.doka.options'),
             'dokaEnabled' => config('nova-filepond.doka.enabled'),
             'labels' => $this->getLabels(),
-        ], $this->meta(), parent::jsonSerialize());
+        ], $this->meta(), parent::jsonSerialize(), ['value'=>[]]);
     }
 
 }
