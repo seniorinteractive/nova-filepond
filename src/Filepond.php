@@ -444,19 +444,26 @@ class Filepond extends Field
      */
     public function jsonSerialize()
     {
-        return array_merge([
-            'disk' => $this->disk,
-            'multiple' => $this->multiple,
-            'disabled' => request()->route()->controller instanceof ResourceShowController,
-            'thumbnails' => $this->getThumbnails(),
-            'columns' => 1,
-            'fullWidth' => false,
-            'maxHeight' => 'auto',
-            'limit' => null,
-            'dokaOptions' => config('nova-filepond.doka.options'),
-            'dokaEnabled' => config('nova-filepond.doka.enabled'),
-            'labels' => $this->getLabels(),
-        ], $this->meta(), parent::jsonSerialize(), ['value'=>[]]);
+        return array_merge(
+            [
+                'value' => []
+            ],
+            [
+                'disk' => $this->disk,
+                'multiple' => $this->multiple,
+                'disabled' => request()->route()->controller instanceof ResourceShowController,
+                'thumbnails' => $this->getThumbnails(),
+                'columns' => 1,
+                'fullWidth' => false,
+                'maxHeight' => 'auto',
+                'limit' => null,
+                'dokaOptions' => config('nova-filepond.doka.options'),
+                'dokaEnabled' => config('nova-filepond.doka.enabled'),
+                'labels' => $this->getLabels(),
+            ], 
+            $this->meta(), 
+            parent::jsonSerialize()
+        );
     }
 
 }
