@@ -306,6 +306,7 @@ class Filepond extends Field
         }
 
         $model->setAttribute($attribute, $toKeep->values());
+        request()->request->add(['zfiles' => $toKeep]);
 
     }
 
